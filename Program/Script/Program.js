@@ -8,7 +8,18 @@ class Program {
 
         this.canvas = document.getElementById('screen')
         this.gl = this.canvas.getContext('webgl2')
-        this.glVar = {}
+        this.glVar = {
+            program: {},
+            shader: {
+                vertex: {},
+                fragment: {},
+            },
+            location: {
+                
+            },
+            buffer: {}
+        }
+        GL.glInit(this)
 
         window.addEventListener('keydown', (event) => this.keyDown(event), false)
         window.addEventListener('keyup', (event) => this.keyUp(event), false)
