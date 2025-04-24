@@ -19,6 +19,8 @@ class Program {
             },
             buffer: {}
         }
+        this.HUD = document.createElement('canvas')
+        this.ctx = this.HUD.getContext('2d')
         GL.glInit(this)
 
         window.addEventListener('keydown', (event) => this.keyDown(event), false)
