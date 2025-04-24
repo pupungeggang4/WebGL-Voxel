@@ -6,10 +6,10 @@ function main() {
     program = new Program()
 }
 
-function errorHandle() {
-
+function errorHandle(err, url, line, col, obj) {
+    cancelAnimationFrame(program.programLoop)
 }
 
 function rightClick() {
-
+    return false
 }

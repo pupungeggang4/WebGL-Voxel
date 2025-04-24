@@ -32,7 +32,7 @@ class Program {
 
         this.frameCurrent = performance.now()
         this.framePrevious = performance.now()
-        this.gameLoop = requestAnimationFrame(() => this.loop())
+        this.programLoop = requestAnimationFrame(() => this.loop())
     }
 
     loop() {
@@ -44,7 +44,7 @@ class Program {
             SceneMain.loop(this)
         }
 
-        this.gameLoop = requestAnimationFrame(() => this.loop())
+        this.programLoop = requestAnimationFrame(() => this.loop())
     }
 
     keyDown(event) {
