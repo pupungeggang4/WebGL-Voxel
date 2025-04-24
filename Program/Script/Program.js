@@ -17,7 +17,10 @@ class Program {
             location: {
                 
             },
-            buffer: {}
+            buffer: {},
+            vao: {
+                
+            }
         }
         this.HUD = document.createElement('canvas')
         this.ctx = this.HUD.getContext('2d')

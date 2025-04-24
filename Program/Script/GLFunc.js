@@ -17,12 +17,13 @@ class GL {
         glVar.location.v_coord = gl.getAttribLocation(glVar.program, 'v_coord')
         glVar.location.u_color = gl.getUniformLocation(glVar.program, 'u_color')
 
+        glVar.vao.cube = gl.createVertexArray()
+        gl.bindVertexArray(glVar.vao.cube)
         glVar.buffer = gl.createBuffer(gl.ARRAY_BUFFER)
         gl.bindBuffer(gl.ARRAY_BUFFER, glVar.buffer)
         gl.enableVertexAttribArray(glVar.location.v_coord)
         gl.vertexAttribPointer(glVar.location.v_coord, 3, gl.FLOAT, false, 0, 0)
-
-        gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0]), gl.STATIC_DRAW)
+        gl.bufferData(gl.ARRAY_BUFFER, cubeVAO, gl.STATIC_DRAW)
     }
 
     static convertToBuffer(data) {

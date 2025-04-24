@@ -2,7 +2,20 @@ const shaderSourceVertex = `#version 300 es
     in vec3 v_coord;
 
     void main() {
-        gl_Position = vec4(v_coord, 1.0);
+        vec4 coord = vec4(v_coord, 1.0);
+        coord = mat4(
+            0.6, 0.0, 0.8, 0.0,
+            0.0, 1.0, 0.0, 0.0,
+            -0.8, 0.0, 0.6, 0.0,
+            0.0, 0.0, 0.0, 1.0
+        ) * coord;
+        coord = mat4(
+            1.0, 0.0, 0.0, 0.0,
+            0.0, 0.8, -0.6, 0.0,
+            0.0, 0.6, 0.8, 0.0,
+            0.0, 0.0, 0.0, 1.0
+        ) * coord;
+        gl_Position = coord;
     }
 `
 
