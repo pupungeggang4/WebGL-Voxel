@@ -7,7 +7,11 @@ class Camera3D {
 }
 
 class VoxelModel3D {
-    constructor() {
-        this.position = new Vector3D(0, 0, 0),
+    constructor(pos, size) {
+        this.cuboid = new Cuboid3D(pos[0], pos[1], pos[2], size[0], size[1], size[2])
+    }
+
+    render(program) {
+
     }
 }
