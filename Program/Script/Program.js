@@ -28,7 +28,7 @@ class Program {
 
         window.addEventListener('keydown', (event) => this.keyDown(event), false)
         window.addEventListener('keyup', (event) => this.keyUp(event), false)
-        this.canvas.addEventListener('mouseup', (event) => this.mouseUp(event), false)
+        this.HUD.addEventListener('mouseup', (event) => this.mouseUp(event), false)
         this.pointer = [0, 0]
 
         this.frameCurrent = performance.now()
@@ -77,13 +77,12 @@ class Program {
             SceneMain.mouseUp(this, pos, button)
         }
         */
-        this.canvas.requestPointerLock()
         console.log(1)
-        this.canvas.addEventListener('mousemove', (event) => this.mousemove(event), false)
+        this.HUD.requestPointerLock()
+        this.HUD.addEventListener('mousemove', (event) => this.mouseMove(event), false)
     }
 
     mouseMove(event) {
-        this.pointer[0] = event.movementX
-        this.pointer[1] = event.movementY
+        console.log(event.movementX, event.movementY)
     }
 }
