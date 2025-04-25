@@ -20,6 +20,7 @@ class GL {
         glVar.location.u_cam_rot = gl.getUniformLocation(glVar.program, 'u_cam_rot')
         glVar.location.u_m_pos = gl.getUniformLocation(glVar.program, 'u_m_pos')
         glVar.location.u_camera = gl.getUniformLocation(glVar.program, 'u_camera')
+        glVar.location.u_camera_p = gl.getUniformLocation(glVar.program, 'u_camera_p')
 
         glVar.vao.cube = gl.createVertexArray()
         gl.bindVertexArray(glVar.vao.cube)

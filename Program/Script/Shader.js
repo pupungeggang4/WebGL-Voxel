@@ -1,6 +1,7 @@
 const shaderSourceVertex = `#version 300 es
     in vec3 v_coord;
     uniform float u_camera[6];
+    uniform float u_camera_p[4];
     uniform vec3 u_cam_pos;
     uniform vec3 u_cam_rot;
     uniform vec3 u_m_pos;
@@ -13,6 +14,10 @@ const shaderSourceVertex = `#version 300 es
         float t = u_camera[3];
         float n = u_camera[4];
         float f = u_camera[5];
+        float fov = u_camera_p[0];
+        float a = u_camera_p[1];
+        float near = u_camera_p[2];
+        float far = u_camera_p[3];
         mat4 mt = mat4(
             1.0, 0.0, 0.0, 0.0,
             0.0, 1.0, 0.0, 0.0,
@@ -43,7 +48,13 @@ const shaderSourceVertex = `#version 300 es
             0.0, 0.0, -2.0/(f-n), 0.0,
             -(r+l)/(r-l), -(t+b)/(t-b), -(f+n)/(f-n), 1.0
         );
-        coord = proj * cry * crx * ct * mt * coord;
+        mat4 pproj = mat4(
+            a/tan(fov/2.0), 0.0, 0.0, 0.0,
+            0.0, 1.0/tan(fov/2.0), 0.0, 0.0,
+            0.0, 0.0, (near+far)/(near-far), -1.0,
+            0.0, 0.0, (2.0*near*far)/(near-far), 0.0
+        );
+        coord = pproj * cry * crx * ct * mt * coord;
         gl_Position = coord;
     }
 `

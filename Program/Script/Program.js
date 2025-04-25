@@ -14,7 +14,7 @@ class Program {
             'left': false, 'right': false, 'up': false, 'down': false,
             'c_left': false, 'c_right': false, 'c_up': false, 'c_down': false
         }
-        this.voxel = [[0, 0, 0], [1, 1, 0]]
+        this.voxel = [[0, 0, -2], [1, 1, -2]]
         this.camera = new Camera3D()
 
         this.canvas = document.getElementById('screen')

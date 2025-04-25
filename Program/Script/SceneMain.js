@@ -32,10 +32,10 @@ class SceneMain {
             program.camera.position.x += program.camera.speed * program.delta / 1000
         }
         if (program.keyPressed['up'] === true) {
-            program.camera.position.z += program.camera.speed * program.delta / 1000
+            program.camera.position.z -= program.camera.speed * program.delta / 1000
         }
         if (program.keyPressed['down'] === true) {
-            program.camera.position.z -= program.camera.speed * program.delta / 1000
+            program.camera.position.z += program.camera.speed * program.delta / 1000
         }
         if (program.keyPressed['c_left'] === true) {
             program.camera.rotation.y += 90 * Math.PI / 180 * program.delta / 1000
