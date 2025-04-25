@@ -7,15 +7,37 @@ class Program {
         this.menu = false
 
         this.keyMap = {
-            'left': 'a', 'right': 'd', 'up': 'w', 'down': 's',
-            'c_left': 'ArrowLeft', 'c_right': 'ArrowRight', 'c_up': 'ArrowUp', 'c_down': 'ArrowDown'
+            'left': 'a', 'right': 'd', 'up': ' ', 'down': 'x', 'forward': 'w', 'backward': 's',
+            'c_left': 'ArrowLeft', 'c_right': 'ArrowRight', 'c_down': 'ArrowDown', 'c_up': 'ArrowUp',
         }
         this.keyPressed = {
-            'left': false, 'right': false, 'up': false, 'down': false,
-            'c_left': false, 'c_right': false, 'c_up': false, 'c_down': false
+            'left': false, 'right': false, 'up': false, 'down': false, 'forward': false, 'backward': false,
+            'c_left': false, 'c_right': false, 'c_up': false, 'c_down': false,
         }
-        this.voxel = [[0, 0, -2], [1, 1, -2]]
+        this.voxel = [
+            [-1, -1, -19, 1, 1, 1],
+            [-1, 0, -19, 1, 0, 1],
+            [-1, 1, -19, 1, 1, 1],
+            [0, -1, -19, 1, 0, 1],
+            [0, 1, -19, 1, 0, 1],
+            [1, -1, -19, 1, 1, 1],
+            [1, 0, -19, 1, 0, 1],
+            [1, 1, -19, 1, 1, 1],
+            [-1, -1, -20, 1, 0, 1],
+            [-1, 1, -20, 1, 0, 1],
+            [1, -1, -20, 1, 0, 1],
+            [1, 1, -20, 1, 0, 1],
+            [-1, -1, -21, 1, 1, 1],
+            [-1, 0, -21, 1, 0, 1],
+            [-1, 1, -21, 1, 1, 1],
+            [0, -1, -21, 1, 0, 1],
+            [0, 1, -21, 1, 0, 1],
+            [1, -1, -21, 1, 1, 1],
+            [1, 0, -21, 1, 0, 1],
+            [1, 1, -21, 1, 1, 1],
+        ]
         this.camera = new Camera3D()
+        this.facing = new Vector3D(0, 0, -1)
 
         this.canvas = document.getElementById('screen')
         this.gl = this.canvas.getContext('webgl2')

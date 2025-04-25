@@ -54,7 +54,7 @@ const shaderSourceVertex = `#version 300 es
             0.0, 0.0, (near+far)/(near-far), -1.0,
             0.0, 0.0, (2.0*near*far)/(near-far), 0.0
         );
-        coord = pproj * cry * crx * ct * mt * coord;
+        coord = pproj * crx * cry * ct * mt * coord;
         gl_Position = coord;
     }
 `
