@@ -24,6 +24,12 @@ const shaderSourceVertex = `#version 300 es
             0.0, 0.0, 1.0, 0.0,
             u_m_pos.x, u_m_pos.y, u_m_pos.z, 1.0
         );
+        mat4 ms = mat4(
+            0.1, 0.0, 0.0, 0.0,
+            0.0, 0.1, 0.0, 0.0,
+            0.0, 0.0, 0.1, 0.0,
+            0.0, 0.0, 0.0, 1.0
+        );
         mat4 ct = mat4(
             1.0, 0.0, 0.0, 0.0,
             0.0, 1.0, 0.0, 0.0,
@@ -54,7 +60,7 @@ const shaderSourceVertex = `#version 300 es
             0.0, 0.0, (near+far)/(near-far), -1.0,
             0.0, 0.0, (2.0*near*far)/(near-far), 0.0
         );
-        coord = pproj * crx * cry * ct * mt * coord;
+        coord = pproj * crx * cry * ct * mt * ms * coord;
         gl_Position = coord;
     }
 `
