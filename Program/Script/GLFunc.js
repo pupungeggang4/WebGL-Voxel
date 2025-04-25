@@ -17,6 +17,8 @@ class GL {
         glVar.location.v_coord = gl.getAttribLocation(glVar.program, 'v_coord')
         glVar.location.u_color = gl.getUniformLocation(glVar.program, 'u_color')
         glVar.location.u_cam_pos = gl.getUniformLocation(glVar.program, 'u_cam_pos')
+        glVar.location.u_cam_rot = gl.getUniformLocation(glVar.program, 'u_cam_rot')
+        glVar.location.u_m_pos = gl.getUniformLocation(glVar.program, 'u_m_pos')
         glVar.location.u_camera = gl.getUniformLocation(glVar.program, 'u_camera')
 
         glVar.vao.cube = gl.createVertexArray()
@@ -26,9 +28,5 @@ class GL {
         gl.enableVertexAttribArray(glVar.location.v_coord)
         gl.vertexAttribPointer(glVar.location.v_coord, 3, gl.FLOAT, false, 0, 0)
         gl.bufferData(gl.ARRAY_BUFFER, cubeVAO, gl.STATIC_DRAW)
-    }
-
-    static convertToBuffer(data) {
-        
     }
 }

@@ -2,7 +2,8 @@ const shaderSourceVertex = `#version 300 es
     in vec3 v_coord;
     uniform float u_camera[6];
     uniform vec3 u_cam_pos;
-    uniform vec4 u_cam_rot;
+    uniform vec3 u_cam_rot;
+    uniform vec3 u_m_pos;
 
     void main() {
         vec4 coord = vec4(v_coord, 1.0);
@@ -12,19 +13,37 @@ const shaderSourceVertex = `#version 300 es
         float t = u_camera[3];
         float n = u_camera[4];
         float f = u_camera[5];
+        mat4 mt = mat4(
+            1.0, 0.0, 0.0, 0.0,
+            0.0, 1.0, 0.0, 0.0,
+            0.0, 0.0, 1.0, 0.0,
+            u_m_pos.x, u_m_pos.y, u_m_pos.z, 1.0
+        );
         mat4 ct = mat4(
-            1.0, 0.0, 0.0, -u_cam_pos.x,
-            0.0, 1.0, 0.0, -u_cam_pos.y,
-            0.0, 0.0, 1.0, -u_cam_pos.z,
+            1.0, 0.0, 0.0, 0.0,
+            0.0, 1.0, 0.0, 0.0,
+            0.0, 0.0, 1.0, 0.0,
+            -u_cam_pos.x, -u_cam_pos.y, -u_cam_pos.z, 1.0
+        );
+        mat4 crx = mat4(
+            1.0, 0.0, 0.0, 0.0,
+            0.0, cos(-u_cam_rot.x), sin(-u_cam_rot.x), 0.0,
+            0.0, -sin(-u_cam_rot.x), cos(-u_cam_rot.x), 0.0,
+            0.0, 0.0, 0.0, 1.0
+        );
+        mat4 cry = mat4(
+            cos(-u_cam_rot.y), 0.0, -sin(-u_cam_rot.y), 0.0,
+            0.0, 1.0, 0.0, 0.0,
+            sin(-u_cam_rot.y), 0.0, cos(-u_cam_rot.y), 0.0,
             0.0, 0.0, 0.0, 1.0
         );
         mat4 proj = mat4(
-            2.0/(r-l), 0.0, 0.0, -(r+l)/(r-l),
-            0.0, 2.0/(t-b), 0.0, -(t+b)/(t-b),
-            0.0, 0.0, -2.0/(f-n), -(f+n)/(f-n),
-            0.0, 0.0, 0.0, 1.0
+            2.0/(r-l), 0.0, 0.0, 0.0,
+            0.0, 2.0/(t-b), 0.0, 0.0,
+            0.0, 0.0, -2.0/(f-n), 0.0,
+            -(r+l)/(r-l), -(t+b)/(t-b), -(f+n)/(f-n), 1.0
         );
-        coord = proj * (ct * coord);
+        coord = proj * cry * crx * ct * mt * coord;
         gl_Position = coord;
     }
 `
