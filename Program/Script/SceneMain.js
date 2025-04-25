@@ -5,6 +5,8 @@ class SceneMain {
 
     static render(program) {
         Render.init(program)
+        Render.HUDInit(program)
+        program.ctx.fillText(program.pointer, 24, 24)
     }
 
     static mouseUp(program, pos, button) {

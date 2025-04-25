@@ -22,13 +22,14 @@ class Program {
                 
             }
         }
-        this.HUD = document.createElement('canvas')
+        this.HUD = document.getElementById('hud')
         this.ctx = this.HUD.getContext('2d')
         GL.glInit(this)
 
         window.addEventListener('keydown', (event) => this.keyDown(event), false)
         window.addEventListener('keyup', (event) => this.keyUp(event), false)
         this.canvas.addEventListener('mouseup', (event) => this.mouseUp(event), false)
+        this.pointer = [0, 0]
 
         this.frameCurrent = performance.now()
         this.framePrevious = performance.now()
@@ -64,6 +65,7 @@ class Program {
     }
 
     mouseUp(event) {
+        /*
         let targetRect = this.canvas.getBoundingClientRect()
         let pos = {
             x: (event.clientX - targetRect.left) / targetRect.width * this.canvas.width,
@@ -74,5 +76,14 @@ class Program {
         if (this.scene === 'main') {
             SceneMain.mouseUp(this, pos, button)
         }
+        */
+        this.canvas.requestPointerLock()
+        console.log(1)
+        this.canvas.addEventListener('mousemove', (event) => this.mousemove(event), false)
+    }
+
+    mouseMove(event) {
+        this.pointer[0] = event.movementX
+        this.pointer[1] = event.movementY
     }
 }

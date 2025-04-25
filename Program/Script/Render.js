@@ -10,11 +10,20 @@ class Render {
         gl.bindVertexArray(glVar.vao.cube)
         gl.bindBuffer(gl.ARRAY_BUFFER, glVar.buffer)
         gl.uniform1fv(glVar.location.u_camera, [-16.0, 16.0, -10.0, 10.0, -10.0, 10.0])
+        gl.uniform3f(glVar.location.u_cam_pos, 0.0, 0.0, 0.0)
         gl.uniform3f(glVar.location.u_color, 1.0, 0.0, 0.0)
         gl.drawArrays(gl.TRIANGLES, 0, 12)
         gl.uniform3f(glVar.location.u_color, 0.0, 1.0, 0.0)
         gl.drawArrays(gl.TRIANGLES, 12, 12)
         gl.uniform3f(glVar.location.u_color, 0.0, 0.0, 1.0)
         gl.drawArrays(gl.TRIANGLES, 24, 12)
+    }
+
+    static HUDInit(program) {
+        program.ctx.font = '32px neodgm'
+        program.ctx.textAlign = 'left'
+        program.ctx.textBaseline = 'top'
+        program.ctx.fillStyle = 'Yellow'
+        program.ctx.clearRect(0, 0, 1280, 800)
     }
 }

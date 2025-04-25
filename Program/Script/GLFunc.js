@@ -16,6 +16,7 @@ class GL {
 
         glVar.location.v_coord = gl.getAttribLocation(glVar.program, 'v_coord')
         glVar.location.u_color = gl.getUniformLocation(glVar.program, 'u_color')
+        glVar.location.u_cam_pos = gl.getUniformLocation(glVar.program, 'u_cam_pos')
         glVar.location.u_camera = gl.getUniformLocation(glVar.program, 'u_camera')
 
         glVar.vao.cube = gl.createVertexArray()
