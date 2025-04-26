@@ -14,7 +14,7 @@ class Render {
         gl.bindBuffer(gl.ARRAY_BUFFER, glVar.buffer)
         
         gl.uniform1fv(glVar.location.u_camera, [-16.0, 16.0, -10.0, 10.0, -10.0, 10.0])
-        gl.uniform1fv(glVar.location.u_camera_p, [1, 1/1.6, 0.5, 50])
+        gl.uniform1fv(glVar.location.u_camera_p, [1, 1/1.6, 0.1, 10])
         gl.uniform3f(glVar.location.u_cam_pos, program.camera.position.x, program.camera.position.y, program.camera.position.z)
         gl.uniform3f(glVar.location.u_cam_rot, program.camera.rotation.x, program.camera.rotation.y, program.camera.rotation.z)
         
@@ -22,9 +22,9 @@ class Render {
             gl.uniform3f(glVar.location.u_m_pos, program.voxel[i][0], program.voxel[i][1], program.voxel[i][2])
             gl.uniform3f(glVar.location.u_color, program.voxel[i][3], program.voxel[i][4], program.voxel[i][5])
             gl.drawArrays(gl.TRIANGLES, 0, 36)
-            gl.uniform3f(glVar.location.u_m_pos, program.voxel[i][0], program.voxel[i][1], program.voxel[i][2])
-            gl.uniform3f(glVar.location.u_color, 1.0, 0.0, 0.0)
-            gl.drawArrays(gl.LINES, 36, 24)
+            //gl.uniform3f(glVar.location.u_m_pos, program.voxel[i][0], program.voxel[i][1], program.voxel[i][2])
+            //gl.uniform3f(glVar.location.u_color, 1.0, 0.0, 0.0)
+            //gl.drawArrays(gl.LINES, 36, 24)
         }
     }
 
